@@ -12,12 +12,14 @@ class Student:
     def get_name(self):
         return self.name
 
-    def set_email(self, email):
-        if "@" in email:
-            self.__email = email
-
     def get_email(self):
         return self.__email
+
+    def set_email(self, email):
+        if "@gmail.com" in email:
+            self.__email = email
+        else:
+            print("Email not valid")
 
     def enroll_course(self, course_code):
         self.courses.append(course_code)
