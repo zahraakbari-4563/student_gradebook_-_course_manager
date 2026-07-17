@@ -15,12 +15,11 @@ class Assessment:
         print(f"Your grade is: {percentage}%")
 
     def display_info(self):
-        print(f"Title: {self.title} - Score: {self.max_score}%")
+        print(f"Title: {self.title} - Score: {self.max_score}")
 
 class Quiz(Assessment):
     def display_info(self):
-        print("Quiz:")
-        super().display_info()
+        print(f"Quiz: {self.title} - Max_score: {self.max_score}")
 
     def grade_message(self, score):
         super().grade_message(score)
@@ -29,6 +28,7 @@ class Quiz(Assessment):
             print("Great quiz result!")
         elif percentage <= 75:
             print("Needs more practice")
+
 
 
 
