@@ -26,12 +26,19 @@ class Quiz(Assessment):
         percentage = self.calculate_percentage(score)
         if percentage >= 75:
             print("Great quiz result!")
-        elif percentage <= 75:
+        else:
             print("Needs more practice")
 
 
+class Exam(Assessment):
+    def display_info(self):
+        print(f"Exam: {self.title} - Score: {self.max_score}")
 
-
-
-
+    def grade_message(self, score):
+        super().grade_message(score)
+        percentage = self.calculate_percentage(score)
+        if 100 >= percentage >= 55:
+            print("Passed exam!")
+        else:
+            print("Failed exam!")
 
