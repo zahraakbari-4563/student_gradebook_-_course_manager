@@ -1,9 +1,9 @@
 class Student:
-    def __init__(self, student_id, name, email, courses):
+    def __init__(self, student_id, name, email):
         self.__student_id = student_id
         self.name = name
         self.__email = email
-        self.courses = courses
+        self.courses = []
 
 
     def get_id(self):
