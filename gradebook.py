@@ -14,10 +14,11 @@ class GradeBook:
 
 
     def enroll_student(self, student_id, course_code):
-        if course_code in self.courses and student_id in self.students:
-            self.courses[course_code].enroll_student(student_id)
+        if student_id in self.students and course_code in self.courses:
+            self.students[student_id].enroll_course(course_code)
+            self.courses[course_code].add_student(student_id)
         else:
-            print("Course or student not found!")
+            print("Student or course not found.")
 
 
     def add_assessment(self, course_code, assessment):
@@ -49,7 +50,7 @@ class GradeBook:
 
     def show_report(self, student_id):
         student = self.students[student_id]
-        print(f"Student ID: {student.student_id}")
+        print(f"Student ID: {student.get_id()}")
         print(f"Name: {student.name}")
         print(F"Courses: {student.courses}")
         if student_id not in self.grades:
@@ -66,7 +67,7 @@ class GradeBook:
 
     def search_student(self, keyword):
         for student in self.students.values():
-            if keyword == student.student_id or keyword.lower() == student.name.lower():
+            if keyword == student.get_id() or keyword.lower() == student.name.lower():
                 return student
         return None
 
@@ -84,3 +85,12 @@ class GradeBook:
            return "Passed"
        else:
            return "Failed"
+
+    def view_students(self):
+        if not self.students:
+            print("No students found.")
+            return
+
+        for student in self.students.values():
+            student.display_info()
+            print("-" * 30)
