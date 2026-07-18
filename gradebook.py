@@ -46,3 +46,41 @@ class GradeBook:
         grades = self.grades[student_id][course_code].values()
         average = sum(grades) / len(grades)
         return average
+
+    def show_report(self, student_id):
+        student = self.students[student_id]
+        print(f"Student ID: {student.student_id}")
+        print(f"Name: {student.name}")
+        print(F"Courses: {student.courses}")
+        if student_id not in self.grades:
+            print("No grades recorded for this student.")
+            return
+        for course in student.courses:
+            print(f"\nCourse: {course}")
+            if course in self.grades[student_id]:
+                for assessment, score in self.grades[student_id][course].items():
+                    print(f"{assessment}: {score}")
+                average = self.calculate_average(student_id, course)
+                print(f"Average: {average: .2f}")
+                print(f"Result: {self.get_result(average)}")
+
+    def search_student(self, keyword):
+        for student in self.students.values():
+            if keyword == student.student_id or keyword.lower() == student.name.lower():
+                return student
+        return None
+
+
+    def delete_student(self, student_id):
+        if student_id in self.students:
+            del self.students[student_id]
+
+        else:
+            print("Student not found.")
+
+
+    def get_result(self, average):
+       if average>= self.passing_grade:
+           return "Passed"
+       else:
+           return "Failed"
