@@ -6,3 +6,8 @@ class GradeBook:
         self.passing_grade = 55
 
 
+    def add_student(self, student):
+        self.students[student.get_id()] = student
+
+    def add_course(self, course):
+        self.courses[course.course_code] = course
