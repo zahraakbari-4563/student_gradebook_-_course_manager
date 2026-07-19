@@ -14,9 +14,9 @@ course_1 = Course("PY101", "Python Programming")
 course_2 = Course("WD101", "Web Development")
 
 
-quiz_1 = Quiz("Quiz 1", "100")
-exam_1 = Exam("Midterm Exam", "100")
-project_1 = Project("Final Project", "100")
+quiz_1 = Quiz("Quiz 1", 10)
+exam_1 = Exam("Midterm Exam", 100)
+project_1 = Project("Final Project", 100)
 
 
 gradebook.add_student(student_1)
