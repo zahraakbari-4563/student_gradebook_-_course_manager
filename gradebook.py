@@ -112,3 +112,36 @@ class GradeBook:
         for student in self.students.values():
             student.display_info()
             print("-" * 30)
+
+
+    def show_dashboard(self):
+        print("\n==== Dashboard ====")
+        print(f"Total Students: {len(self.students)}")
+        print(f"Total Courses: {len(self.courses)}")
+        total_assessments = 0
+        for course in self.courses.values():
+            total_assessments += len(course.assessments)
+        print(f"Total Assessments: {total_assessments}")
+
+        total_grades = 0
+        for student_grades in self.grades.values():
+            for course_grade in student_grades.values():
+                total_grades += len(course_grade)
+        print(f"Total Grades Recorded: {total_grades}")
+
+
+    @staticmethod
+    def show_menu():
+        print("\n===== Student Gradebook Manager =====")
+        print("1. Add Student")
+        print("2. View Students")
+        print("3. Add Course")
+        print("4. Enroll Student in Course")
+        print("5. Add Assignment")
+        print("6. Record Grade")
+        print("7. View Student Report")
+        print("8. Search Student")
+        print("9. Delete Student")
+        print("10.Dashboard")
+        print("0. Exit")
+        print("====" * 10)
