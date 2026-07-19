@@ -4,18 +4,7 @@ from course import Course
 from assessment import Quiz, Exam, Project
 
 while True:
-    print("\n===== Student Gradebook Manager =====")
-    print("1. Add Student")
-    print("2. View Students")
-    print("3. Add Course")
-    print("4. Enroll Student in Course")
-    print("5. Add Assignment")
-    print("6. Record Grade")
-    print("7. View Student Report")
-    print("8. Search Student")
-    print("9. Delete Student")
-    print("0. Exit")
-    print("====" * 10)
+    gradebook.show_menu()
     choice = input("Choose an option: ")
     if choice == "1":
         student_id = input("Student ID: ")
@@ -79,6 +68,9 @@ while True:
         student_id = input("Student ID: ")
         gradebook.delete_student(student_id)
         print("Student Deleted.")
+
+    elif choice == "10":
+        gradebook.show_dashboard()
 
     elif choice == "0":
         break
