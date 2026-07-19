@@ -22,7 +22,6 @@ class Quiz(Assessment):
         print(f"Quiz: {self.title} - Max_score: {self.max_score}")
 
     def grade_message(self, score):
-        super().grade_message(score)
         percentage = self.calculate_percentage(score)
         if percentage >= 75:
             print("Great quiz result!")
@@ -35,7 +34,6 @@ class Exam(Assessment):
         print(f"Exam: {self.title} - Score: {self.max_score}")
 
     def grade_message(self, score):
-        super().grade_message(score)
         percentage = self.calculate_percentage(score)
         if 100 >= percentage >= 55:
             print("Passed exam!")
@@ -48,7 +46,6 @@ class Project(Assessment):
         print(f"Project: {self.title} - Score: {self.max_score}")
 
     def grade_message(self, score):
-        super().grade_message(score)
         percentage = self.calculate_percentage(score)
         if percentage >= 80:
             print("Excellent project!")
