@@ -40,6 +40,6 @@ gradebook.add_assessment("WD101", quiz_1)
 gradebook.add_assessment("WD101", exam_1)
 gradebook.add_assessment("WD101", project_1)
 
-gradebook.record_grade("S001", "PY101", "Quiz 1", 80)
+gradebook.record_grade("S001", "PY101", "Quiz 1", 8)
 gradebook.record_grade("S001", "PY101", "Midterm Exam", 75)
 gradebook.record_grade("S001", "PY101", "Final Project", 90)
