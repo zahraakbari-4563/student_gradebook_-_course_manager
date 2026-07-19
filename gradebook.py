@@ -50,20 +50,38 @@ class GradeBook:
 
     def show_report(self, student_id):
         student = self.students[student_id]
-        print(f"Student ID: {student.get_id()}")
         print(f"Name: {student.name}")
-        print(F"Courses: {student.courses}")
         if student_id not in self.grades:
             print("No grades recorded for this student.")
             return
         for course in student.courses:
             print(f"\nCourse: {course}")
             if course in self.grades[student_id]:
-                for assessment, score in self.grades[student_id][course].items():
-                    print(f"{assessment}: {score}")
+                for assessment_title, score in self.grades[student_id][course].items():
+                    print(f"{assessment_title}: {score}")
+                    for assessment_obj in self.courses[course].assessments:
+                        if assessment_obj.title == assessment_title:
+                            assessment_obj.grade_message(score)
+                            print("=" * 3)
+                            break
                 average = self.calculate_average(student_id, course)
                 print(f"Average: {average: .2f}")
+                print(f"letter Grade: {self.get_letter_grade(average)}")
                 print(f"Result: {self.get_result(average)}")
+
+    def get_letter_grade(self, average):
+        if average >= 90:
+            return "A"
+        elif average >= 80:
+            return "B"
+        elif average >= 70:
+            return "C"
+        elif average >= 60:
+            return "D"
+        elif average >= self.passing_grade:
+            return "E"
+        else:
+            return "F"
 
     def search_student(self, keyword):
         for student in self.students.values():
