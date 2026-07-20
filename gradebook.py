@@ -45,7 +45,12 @@ class GradeBook:
 
     def calculate_average(self,student_id, course_code):
         grades = self.grades[student_id][course_code].values()
-        average = sum(grades) / len(grades)
+        percentages = []
+        for assessment in self.courses[course_code].assessments:
+            score = self.grades[student_id][course_code][assessment.title]
+            percentage = assessment.calculate_percentage(score)
+            percentages.append(percentage)
+        average = sum(percentages) / len(percentages)
         return average
 
     def show_report(self, student_id):
